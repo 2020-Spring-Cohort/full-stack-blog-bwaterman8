@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Babushka Food Category</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/layout.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Babushka</h1>
+        <h2>Check out our list of blogs for *th food*</h2>
+    </header>
+    <section class="blog-links">
+        <nav class="blog-links_nav">
+            <ul class="blog-links_list">
+                <li class="blog-links_one" th:each= "blog:${food.blog}">
+                    <a class="blog-links_one_link" th:href="@{'/blog/'+ ${blog.title}}"
+                       th:text="${blog.title}">Perogi</a>
+                </li>
+            </ul>
+        </nav>
+        <a class="blog-links_home_page_link" href="/home">Home Page</a>
+    </section>
+
+
+</body>
+</html>
