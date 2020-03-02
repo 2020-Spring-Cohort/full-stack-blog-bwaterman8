@@ -6,6 +6,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wcci.blog.models.Food;
+import org.wcci.blog.storage.BlogStorage;
 import org.wcci.blog.storage.FoodStorage;
 
 import java.util.Collections;
@@ -23,12 +24,14 @@ public class FoodControllerTest {
     private FoodController underTest;
     private FoodStorage mockStorage;
     private Model mockModel;
+    private BlogStorage blogStorage;
 
     @BeforeEach
     public void setUp() {
         mockModel = mock(Model.class);
         mockStorage = mock(FoodStorage.class);
-        underTest = new FoodController(mockStorage);
+        blogStorage = mock(BlogStorage.class);
+        underTest = new FoodController(mockStorage, blogStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 

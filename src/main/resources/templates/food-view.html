@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -10,22 +11,39 @@
     <link href="./css/layout.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1 class="food_title">Babushka's</h1>
-        <h2 th:text="${food.type}" class="food_header">Food</h2>
-    </header>
-    <section class="food_blog-links">
-        <nav class="food_blog-links_nav">
-            <ul class="food_blog-links_list">
-                <li class="food_blog-links_one" th:each= "blog:${blog.title}">
-                    <a class="food_blog-links_one_link" th:href="@{'/blog/'+ ${food.type}}"
-                       th:text="${food.type}">Pierogi</a>
-                </li>
-            </ul>
-        </nav>
-        <a href="home-view.html" class="blog-links_home_page_link">Home</a>
-    </section>
+<!--    <header>-->
+<!--        <h1 class="food_title">Babushka's</h1>-->
+<!--        <h2 th:text="${food.type}" class="food_header">Food</h2>-->
+<!--    </header>-->
+<!--    <section class="food_blog-links">-->
+<!--        <nav class="food_blog-links_nav">-->
+<!--            <ul class="food_blog-links_list">-->
+<!--                <li class="food_blog-links_one" th:each= >-->
+<!--                    <a class="food_blog-links_one_link" th:href="@{'/blog/'+ ${food.type}}"-->
+<!--                       th:text="${food.type}">Pierogi</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--        <a href="home-view.html" class="blog-links_home_page_link">Home</a>-->
+<!--    </section>-->
 
+<section class="details">
+    <h2 th:text="${food.type}" class = "category-type">xxx</h2>
+
+    <h2 th:each="blog:${food.blogs}"><a th:href="@{'/blog/'+ ${blog.id}}"
+                                               th:text="${blog.title}">Review</a>
+    </h2>
+</section>
+
+<div class="blog-form">
+    <form action="/add-food" method="POST">
+        <lable>Title of your post:</lable><br><input type="text" name="wineName">
+        <br><lable>Post content:</lable><br><input type="text" name="blogPost">
+        <input th:value="${food.type}" type="hidden" name="foodId">
+        <button type="submit">Submit Post</button>
+    </form>
+</div>
+<a th:href="'/home'">Home</a>
 
 </body>
 </html>

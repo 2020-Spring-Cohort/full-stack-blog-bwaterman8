@@ -17,6 +17,7 @@ import java.util.Optional;
 public class BlogController {
     private BlogStorage blogStorage;
     private HashTagRepository hashTagRepository;
+    private Long id;
 
     public BlogController(BlogStorage blogStorage, HashTagRepository hashTagRepository) {
         this.blogStorage = blogStorage;
@@ -25,6 +26,7 @@ public class BlogController {
 
     @RequestMapping("/blog/{id}")
     public String displayBlog(@PathVariable Long id, Model model) {
+        this.id = id;
         Blog retrievedBlog = blogStorage.findBlogById(1L);
         model.addAttribute("blog", retrievedBlog);
         return "blog-view";

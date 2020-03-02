@@ -14,12 +14,14 @@
     <h2 class="home_list_title">CHECK OUT OUR POSTS:</h2>
 <nav class="home_list_links_nav">
     <ul class="home_list_links">
-        <li><a th:href="@{'/home/' + ${food.type}}">Pierogi</a></li>
-        <li><a href="food-view.html">Golabki</a></li>
-        <li><a href="food-view.html">Kabanosy</a></li>
+        <li th:each="food:${home}">
+            <a th:href="@{'/home/'+ ${food.type}}" th:text="${food.type}">Pierogi</a>
+            <a th:href="@{'/home/'+ ${food.type}}" th:text="${food.type}">Golabki</a>
+            <a th:href="@{'/home/'+ ${food.type}}" th:text="${food.type}">Kabanosy</a>
+        </li>
+
     </ul>
 </nav>
-<h2 class="home_tag_title">TAGS TO FOLLOW:</h2>
 
 </body>
 </html>
