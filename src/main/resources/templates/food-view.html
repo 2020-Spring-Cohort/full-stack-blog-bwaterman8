@@ -11,19 +11,19 @@
 </head>
 <body>
     <header>
-        <h1>Babushka</h1>
-        <h2>Check out our list of blogs for *th food*</h2>
+        <h1 class="food_title">Babushka's</h1>
+        <h2 th:text="${food.type}" class="food_header">Food</h2>
     </header>
-    <section class="blog-links">
-        <nav class="blog-links_nav">
-            <ul class="blog-links_list">
-                <li class="blog-links_one" th:each= "blog:${food.blog}">
-                    <a class="blog-links_one_link" th:href="@{'/blog/'+ ${blog.title}}"
-                       th:text="${blog.title}">Perogi</a>
+    <section class="food_blog-links">
+        <nav class="food_blog-links_nav">
+            <ul class="food_blog-links_list">
+                <li class="food_blog-links_one" th:each= "blog:${blog.title}">
+                    <a class="food_blog-links_one_link" th:href="@{'/blog/'+ ${food.type}}"
+                       th:text="${food.type}">Pierogi</a>
                 </li>
             </ul>
         </nav>
-        <a class="blog-links_home_page_link" href="/home">Home Page</a>
+        <a href="home-view.html" class="blog-links_home_page_link">Home</a>
     </section>
 
 

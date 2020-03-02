@@ -11,12 +11,18 @@
 </head>
 <body>
 <section class="blog_skeleton">
-    <h1 class="blog_skeleton_title">Title</h1>
-    <h2 class="blog_skeleton_author">Author</h2>
+    <h1 class="blog_skeleton_title" th:text="${blog.title}">Title</h1>
+    <h2 class="blog_skeleton_author" th:each="author: ${blog.authors}" th:text="${author.name}">Author</h2>
     <h3 class="blog_skeleton_date">Date</h3>
-    <p class="blog_skeleton_body">Body of Blog</p>
-    <h3 class="blog_skeleton_hashtag">Hash Tags</h3>
+    <p class="blog_skeleton_body" th:text="${blog.body}">Body of Blog</p>
 </section>
 
+<div th:each="hashtag: ${blog.hashTags}" th:text="${hashtag.name}"></div>
+<form th:action="'/blog/' + ${blog.id} + '/add-hashtag'" method="post">
+    <input name="hashTagName" type="text">
+    <button type="submit">Add some Hashtags</button>
+</form>
+
+<a class="link_homepage" th:href="'/home/'">Home</a>
 </body>
 </html>
